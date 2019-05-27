@@ -1,7 +1,10 @@
 import { Dimensions, Platform, StatusBar } from 'react-native';
 
 export function isIphoneX() {
-    const dimen = Dimensions.get('window');
+    let dimen = Dimensions.get('window');
+    if (dimen.width === 0 && dimen.height === 0) {
+        dimen = Dimensions.get('screen');
+    }
     return (
         Platform.OS === 'ios' &&
         !Platform.isPad &&
